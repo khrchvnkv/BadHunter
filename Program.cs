@@ -1,4 +1,10 @@
+using BadHunter.BL.Auth;
+using BadHunter.DAL;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton<IAuthDAL, AuthDAL>();
+builder.Services.AddSingleton<IAuthBL, AuthBL>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
