@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadHunter", "BadHunter.csproj", "{CE45E996-A2CE-47B8-9AB5-441DA17E6177}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE45E996-A2CE-47B8-9AB5-441DA17E6177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE45E996-A2CE-47B8-9AB5-441DA17E6177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE45E996-A2CE-47B8-9AB5-441DA17E6177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE45E996-A2CE-47B8-9AB5-441DA17E6177}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
