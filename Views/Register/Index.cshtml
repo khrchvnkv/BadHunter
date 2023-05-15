@@ -8,11 +8,11 @@
     <form action="/register" method="post">
         <p>
             <label>Email</label>
-            <input name="Email" type="text" value="@Model.Email"/>
+            <input name="@nameof(Model.Email)" type="text" value="@Model.Email"/>
         </p>
         <p>
             <label>Password</label>
-            <input name="Password" type="password"/>
+            <input name="@nameof(Model.Password)" type="password"/>
         </p>
         <button>Register</button>
     </form>

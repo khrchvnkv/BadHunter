@@ -23,11 +23,11 @@ namespace BadHunter.Controllers
         
         [HttpPost]
         [Route("/register")]
-        public IActionResult IndexSave(RegisterViewModel model)
+        public async Task<IActionResult> IndexSave(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _authBl.CreateUser(AuthMapper.MapRegisterViewModelToUserModel(model));
+                await _authBl.CreateUser(AuthMapper.MapRegisterViewModelToUserModel(model));
                 return Redirect("/"); 
             }
             return View("Index", new RegisterViewModel());
