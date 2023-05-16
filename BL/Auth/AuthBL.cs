@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using BadHunter.DAL;
 using BadHunter.DAL.Models;
 
@@ -25,7 +26,26 @@ namespace BadHunter.BL.Auth
             Login(id);
             return id;
         }
-        public void Login(int id)
+        public async Task<int> Authentificate(string modelEmail, string modelPassword, bool modelRememberMe)
+        {
+            var user = await _authDal.GetUser(modelEmail);
+            if (user.Password == _encrypter.HashPassword(modelPassword , user.Salt))
+            {
+                Login(user.UserId ?? 0);
+                return user.UserId ?? 0;
+            } 
+            return 0;
+        }
+        public async Task<ValidationResult?> ValidateEmail(string email)
+        {
+            var user = await _authDal.GetUser(email);
+            if (user.UserId.HasValue)
+            {
+                return new ValidationResult("Email already exists");
+            }
+            return null;
+        }
+        private void Login(int id)
         {
             _httpContextAccessor.HttpContext?.Session.SetInt32(AuthConstants.AUTH_SESSION_PARAM_NAME, id);
         }

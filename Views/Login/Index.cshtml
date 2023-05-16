@@ -1,11 +1,11 @@
-@model RegisterViewModel
+@model LoginViewModel
 
 @{
-    ViewData["Title"] = "Registration";
+    ViewData["Title"] = "Login";
 }
 
 <div>
-    <form action="/register" method="post">
+    <form action="/login" method="post">
         <p>
             <label>Email</label>
             <input name="@nameof(Model.Email)" type="text" value="@Model.Email"/>
@@ -16,6 +16,10 @@
             <input name="@nameof(Model.Password)" type="password"/>
             <div class="error">@Html.ValidationMessageFor(m => m.Password)</div>
         </p>
-        <button>Register</button>
+        <p>
+            <label>Remember me?</label>
+            <input name="@nameof(Model.RememberMe)" type="checkbox"/>
+        </p>
+        <button>Login</button>
     </form>
 </div>

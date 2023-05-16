@@ -27,6 +27,15 @@ namespace BadHunter.Controllers
         {
             if (ModelState.IsValid)
             {
+                var errorModel = await _authBl.ValidateEmail(model.Email!);
+                if (errorModel != null)
+                {
+                    ModelState.AddModelError(nameof(model.Email), errorModel.ErrorMessage!);
+                }
+            }
+            
+            if (ModelState.IsValid)
+            {
                 await _authBl.CreateUser(AuthMapper.MapRegisterViewModelToUserModel(model));
                 return Redirect("/"); 
             }
