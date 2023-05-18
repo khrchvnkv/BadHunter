@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using BadHunter.BL.Exceptions;
 using BadHunter.DAL;
 using BadHunter.DAL.Models;
 
@@ -29,12 +30,13 @@ namespace BadHunter.BL.Auth
         public async Task<int> Authentificate(string modelEmail, string modelPassword, bool modelRememberMe)
         {
             var user = await _authDal.GetUser(modelEmail);
-            if (user.Password == _encrypter.HashPassword(modelPassword , user.Salt))
+            if (user.UserId != null &&
+                user.Password == _encrypter.HashPassword(modelPassword , user.Salt))
             {
                 Login(user.UserId ?? 0);
                 return user.UserId ?? 0;
-            } 
-            return 0;
+            }
+            throw new AuthorizationException();
         }
         public async Task<ValidationResult?> ValidateEmail(string email)
         {
